@@ -37,6 +37,8 @@ export default ({
         path.join(dirStyles, 'index.scss')
     ],
 
+    output: {assetModuleFilename: 'images/[name][ext]'},
+
     resolve: {
         modules: [
             dirApp,
@@ -55,7 +57,7 @@ export default ({
             patterns: [
                 {
                     from: './shared',
-                    to: ''
+                    to: '/assets'
                 }
             ]
         }),
@@ -119,14 +121,19 @@ export default ({
             },
 
             {
-                test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
-                loader: 'file-loader',
-                options: {
-                    name (file) {
-                        return '[hash].[ext]'
-                    }
-                }
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource'
             },
+
+            // {
+            //     test: /\.(jpe?g|png|gif|svg|woff2?|fnt|webp)$/,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name (file) {
+            //             return '[name].[ext]'
+            //         }
+            //     }
+            // },
 
             {
                 test: /\.(jpe?g|png|gif|svg|webp)$/i,

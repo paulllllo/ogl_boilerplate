@@ -1,4 +1,4 @@
-import { each, map } from 'lodash'
+import { each } from 'lodash'
 import GSAP from 'gsap'
 import Prefix from 'prefix'
 import AsyncLoad from './AsyncLoad.js'
@@ -71,7 +71,7 @@ export default class Page {
     }
 
     show (animation) {
-        // console.log('show')
+        console.log('show')
         return new Promise(resolve => {
             if (animation) {
                 this.animationIn = animation
