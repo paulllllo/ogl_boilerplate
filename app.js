@@ -1,8 +1,8 @@
-import { client } from './config/prismicConfig.js'
+// import { client } from './config/prismicConfig.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { createRequire } from 'module'
-import * as prismicH from '@prismicio/helpers'
+// import * as prismicH from '@prismicio/helpers'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -13,7 +13,7 @@ const require = createRequire(import.meta.url)
 require('dotenv').config()
 
 const express = require('express')
-const prismic = require('@prismicio/client')
+// const prismic = require('@prismicio/client')
 const errorHandler = require('errorhandler')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -59,31 +59,41 @@ app.use((req, res, next) => {
 
     // console.log(res.locals.isDesktop, res.locals.isTablet, res.locals.isPhone)
 
-    res.locals.ctx = {
-        prismic
-    }
+    // res.locals.ctx = {
+    //     prismic
+    // }
 
-    res.locals.prismicH = prismicH
+    // res.locals.prismicH = prismicH
+    next()
 })
 
 const handleDefaults = async (client) => {
-    const meta = await client.getSingle('meta')
-    const preloader = await client.getSingle('preloader')
+    // const meta = await client.getSingle('meta')
+    // const preloader = await client.getSingle('preloader')
+
+    const meta = {
+        data: {
+            title: 'Temp',
+            description: 'web portfolio for Odigbo Kelechi Paul',
+            image: {
+                url: ''
+            }
+        }
+    }
 
     // Foo
 
-    const assets = []
+    // const assets = []
+    // return {}
 
 
     return {
-        assets,
-        meta,
-        preloader
+        meta
     }
 }
 
 app.get('/', async (req, res) => {
-    const defaults = await handleDefaults(client)
+    const defaults = await handleDefaults()
 
     res.render('pages/home', {
         ...defaults

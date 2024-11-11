@@ -30,7 +30,7 @@ export default (merge(config.default, {
             'Cache-Control': 'no-store'
         },
         // watchFiles: true,
-        hot: true
+        hot: false
     },
 
     output: {

@@ -12,7 +12,7 @@ class App {
 
         // this.createNavigation()
 
-        this.createCanvas()
+        // this.createCanvas()
 
         // this.createPreloader()
 
@@ -49,6 +49,7 @@ class App {
 
         this.page = this.pages[this.template]
         this.page.create()
+        this.page.show()
         // this.onResize()
     }
 
